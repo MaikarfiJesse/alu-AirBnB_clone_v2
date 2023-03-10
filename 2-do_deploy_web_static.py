@@ -36,9 +36,7 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s /data/web_static/releases/{}/ \
             /data/web_static/current".format(filename))
-        run("sudo sed -i 's|/data/web_static/current/|/data/web_static/current/{}/|g' \
-            /etc/nginx/sites-available/default".format(filename))
-        run("sudo service nginx restart")
+        run("echo '<html><head></head><body>0-index.html</body></html>' > /data/web_static/releases/{}/index.html".format(filename))
         return True
 
     except:
