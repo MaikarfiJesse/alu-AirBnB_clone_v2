@@ -4,6 +4,8 @@ from os.path import exists
 from datetime import datetime
 
 env.hosts = ['18.232.150.46', '18.208.140.214']
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/id_rsa'
 
 
 def do_pack():
@@ -36,7 +38,7 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s /data/web_static/releases/{}/ \
             /data/web_static/current".format(filename))
-        run("echo '<html><head></head><body>0-index.html</body></html>' > /data/web_static/releases/{}/index.html".format(filename))
+        run("touch /data/web_static/current/0-index.html")
         return True
 
     except:
