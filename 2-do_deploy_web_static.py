@@ -38,6 +38,9 @@ def do_deploy(archive_path):
         # Create a new symbolic link to the new version of your code
         run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(name))
 
+        # Create a new file at /data/web_static/current/0-index.html
+        sudo('echo "<html><head><title>Testing</title></head><body><h1>Hello, world!</h1></body></html>" > /data/web_static/current/0-index.html')
+
         print("New version deployed!")
         return True
     except:
