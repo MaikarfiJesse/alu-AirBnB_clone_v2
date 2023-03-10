@@ -57,8 +57,7 @@ def do_deploy(archive_path):
         run("rm -rf {}web_static".format(releases_path))
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(releases_path))
-        run("echo 'Holberton School' > /data/web_static/releases/{}/\
-        hbnb_static/0-index.html".format(wname))
+        run("mv {}web_static/0-index.html {}{}".format(releases_path, releases_path, ''))
         print("New version deployed!")
         return True
     except:
