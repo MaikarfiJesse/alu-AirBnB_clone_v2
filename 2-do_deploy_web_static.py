@@ -6,7 +6,7 @@ env.hosts = ['18.232.150.46', '18.208.140.214']
 env.key_filename = '~/.ssh/id_rsa'
 
 def do_deploy(archive_path):
-    # Check if archive exists
+    """Check if archive exists"""
     if not os.path.exists(archive_path):
         return False
 
