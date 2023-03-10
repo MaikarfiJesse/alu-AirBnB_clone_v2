@@ -27,6 +27,7 @@ def do_deploy(archive_path):
         # upload archive to the /tmp/ directory of the web server
         put(archive_path, tmp_path)
 
+
         # create directory to uncompress archive
         run("mkdir -p {}".format(releases_path))
 
@@ -48,7 +49,6 @@ def do_deploy(archive_path):
 
         # create missing index.html file
         run("echo 'Holberton School' | sudo tee /data/web_static/releases/{}/public/index.html".format(filename))
-
         # delete symbolic link
         run("rm -rf /data/web_static/current")
 
